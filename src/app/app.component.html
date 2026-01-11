@@ -1,0 +1,40 @@
+@if (isLoading()) {
+  <div class="loading-container">
+    <div class="loading-spinner">
+      <div class="spinner-ring"></div>
+      <div class="spinner-ring"></div>
+      <div class="spinner-ring"></div>
+      <div class="spinner-core"></div>
+    </div>
+    <p class="loading-text">Initializing AI Experience Agent...</p>
+  </div>
+} @else if (error()) {
+  <div class="error-container">
+    <div class="error-icon">
+      <span class="material-icons">error_outline</span>
+    </div>
+    <h2 class="error-title">Oops! Something went wrong</h2>
+    <p class="error-message">{{ error() }}</p>
+  </div>
+} @else {
+  <div class="app-layout">
+    <!-- Sidebar -->
+    <app-sidebar></app-sidebar>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <!-- Mind Map Visualization -->
+      <div class="mind-map-section">
+        <app-mind-map></app-mind-map>
+      </div>
+
+      <!-- Content Panel -->
+      <div class="content-section">
+        <app-content-panel></app-content-panel>
+      </div>
+    </main>
+
+    <!-- AI Avatar -->
+    <app-ai-avatar></app-ai-avatar>
+  </div>
+}

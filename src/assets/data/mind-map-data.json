@@ -1,0 +1,306 @@
+{
+  "id": "experience-agent",
+  "title": "AI Experience Agent",
+  "description": "Central intelligence hub orchestrating intelligent experiences across all domains",
+  "type": "root",
+  "icon": "psychology",
+  "color": "#00d4ff",
+  "content": {
+    "overview": "The AI Experience Agent is a sophisticated platform that combines artificial intelligence with domain expertise to deliver transformative solutions across Sustainability & Mobility, Strategy & Growth, and Digital & Operations.",
+    "keyFeatures": [
+      "Intelligent automation and decision support",
+      "Real-time data analytics and insights",
+      "Personalized user experiences",
+      "Cross-domain integration",
+      "Scalable architecture for enterprise needs"
+    ],
+    "benefits": [
+      "Enhanced operational efficiency",
+      "Data-driven strategic decisions",
+      "Improved customer satisfaction",
+      "Reduced costs and time-to-market",
+      "Future-ready digital transformation"
+    ],
+    "useCases": [
+      "Enterprise digital transformation",
+      "Smart city development",
+      "Supply chain optimization",
+      "Customer experience enhancement"
+    ]
+  },
+  "children": [
+    {
+      "id": "sustainability-mobility",
+      "title": "Sustainability & Mobility",
+      "description": "Sustainable solutions for modern transportation and environmental challenges",
+      "type": "domain",
+      "icon": "eco",
+      "color": "#00ff88",
+      "content": {
+        "overview": "Drive environmental sustainability and transform mobility through AI-powered solutions that optimize resource usage, reduce carbon footprint, and enable smart transportation systems.",
+        "keyFeatures": [
+          "Carbon emission tracking and optimization",
+          "Smart transportation routing",
+          "Energy consumption analytics",
+          "Environmental impact assessment"
+        ],
+        "benefits": [
+          "Reduced environmental impact",
+          "Cost-effective transportation",
+          "Regulatory compliance",
+          "Enhanced brand reputation"
+        ]
+      },
+      "children": [
+        {
+          "id": "green-logistics",
+          "title": "Green Logistics",
+          "description": "Eco-friendly supply chain and delivery optimization",
+          "type": "subtopic",
+          "content": {
+            "overview": "Optimize logistics operations while minimizing environmental impact through intelligent route planning, load optimization, and sustainable packaging solutions.",
+            "keyFeatures": [
+              "Route optimization for minimal emissions",
+              "Load balancing algorithms",
+              "Sustainable packaging recommendations",
+              "Carbon footprint tracking"
+            ],
+            "benefits": [
+              "Up to 30% reduction in fuel costs",
+              "Lower carbon emissions",
+              "Improved delivery efficiency",
+              "Enhanced corporate sustainability"
+            ],
+            "technologies": ["Machine Learning", "IoT Sensors", "GPS Tracking", "Cloud Analytics"]
+          }
+        },
+        {
+          "id": "smart-transportation",
+          "title": "Smart Transportation",
+          "description": "Intelligent mobility solutions for urban environments",
+          "type": "subtopic",
+          "content": {
+            "overview": "Transform urban mobility with AI-driven traffic management, autonomous vehicle coordination, and multimodal transportation integration.",
+            "keyFeatures": [
+              "Real-time traffic prediction",
+              "Autonomous vehicle coordination",
+              "Public transit optimization",
+              "Parking management systems"
+            ],
+            "benefits": [
+              "Reduced traffic congestion",
+              "Lower commute times",
+              "Improved air quality",
+              "Enhanced urban livability"
+            ],
+            "technologies": ["Computer Vision", "Edge Computing", "5G Networks", "AI Prediction Models"]
+          }
+        },
+        {
+          "id": "renewable-energy",
+          "title": "Renewable Energy Integration",
+          "description": "Smart grid and clean energy optimization",
+          "type": "subtopic",
+          "content": {
+            "overview": "Maximize renewable energy utilization through intelligent grid management, demand forecasting, and energy storage optimization.",
+            "keyFeatures": [
+              "Energy demand prediction",
+              "Grid load balancing",
+              "Battery storage optimization",
+              "Renewable source integration"
+            ],
+            "benefits": [
+              "Increased renewable energy adoption",
+              "Grid stability improvement",
+              "Energy cost reduction",
+              "Sustainability goals achievement"
+            ],
+            "technologies": ["Time Series Analysis", "Neural Networks", "IoT Integration", "Predictive Analytics"]
+          }
+        }
+      ]
+    },
+    {
+      "id": "strategy-growth",
+      "title": "Strategy & Growth",
+      "description": "Data-driven insights for strategic business decisions and market expansion",
+      "type": "domain",
+      "icon": "trending_up",
+      "color": "#ff6b00",
+      "content": {
+        "overview": "Accelerate business growth through AI-powered market intelligence, customer insights, and strategic planning tools that identify opportunities and optimize resource allocation.",
+        "keyFeatures": [
+          "Market trend analysis",
+          "Competitive intelligence",
+          "Customer behavior prediction",
+          "Revenue forecasting"
+        ],
+        "benefits": [
+          "Informed strategic decisions",
+          "Faster market entry",
+          "Increased revenue opportunities",
+          "Competitive advantage"
+        ]
+      },
+      "children": [
+        {
+          "id": "market-intelligence",
+          "title": "Market Intelligence",
+          "description": "AI-powered competitive analysis and market trends",
+          "type": "subtopic",
+          "content": {
+            "overview": "Gain deep market insights through automated data collection, sentiment analysis, and trend prediction to stay ahead of competition.",
+            "keyFeatures": [
+              "Automated competitor monitoring",
+              "Market sentiment analysis",
+              "Trend prediction algorithms",
+              "Industry benchmark tracking"
+            ],
+            "benefits": [
+              "Early market opportunity detection",
+              "Competitive positioning insights",
+              "Risk mitigation",
+              "Strategic planning support"
+            ],
+            "technologies": ["NLP", "Web Scraping", "Sentiment Analysis", "Big Data Analytics"]
+          }
+        },
+        {
+          "id": "customer-insights",
+          "title": "Customer Insights & Personalization",
+          "description": "Deep customer understanding and personalized experiences",
+          "type": "subtopic",
+          "content": {
+            "overview": "Unlock customer value through behavioral analysis, segmentation, and personalized engagement strategies powered by advanced AI.",
+            "keyFeatures": [
+              "Behavioral pattern recognition",
+              "Dynamic customer segmentation",
+              "Churn prediction",
+              "Personalization engines"
+            ],
+            "benefits": [
+              "Increased customer lifetime value",
+              "Higher conversion rates",
+              "Improved retention",
+              "Enhanced customer satisfaction"
+            ],
+            "technologies": ["Machine Learning", "Customer Data Platforms", "Recommendation Systems", "A/B Testing"]
+          }
+        },
+        {
+          "id": "revenue-optimization",
+          "title": "Revenue Optimization",
+          "description": "Pricing strategy and revenue maximization through AI",
+          "type": "subtopic",
+          "content": {
+            "overview": "Maximize revenue through dynamic pricing, demand forecasting, and intelligent upsell/cross-sell recommendations.",
+            "keyFeatures": [
+              "Dynamic pricing algorithms",
+              "Demand forecasting",
+              "Promotion optimization",
+              "Revenue stream analysis"
+            ],
+            "benefits": [
+              "Revenue growth of 15-25%",
+              "Improved profit margins",
+              "Optimized inventory management",
+              "Better resource allocation"
+            ],
+            "technologies": ["Reinforcement Learning", "Time Series Forecasting", "Optimization Algorithms", "A/B Testing"]
+          }
+        }
+      ]
+    },
+    {
+      "id": "digital-operations",
+      "title": "Digital & Operations",
+      "description": "Intelligent automation and operational excellence through digital transformation",
+      "type": "domain",
+      "icon": "settings",
+      "color": "#ff00ff",
+      "content": {
+        "overview": "Transform operations through intelligent automation, process optimization, and digital tools that enhance efficiency, reduce costs, and improve quality.",
+        "keyFeatures": [
+          "Process automation",
+          "Predictive maintenance",
+          "Quality control systems",
+          "Resource optimization"
+        ],
+        "benefits": [
+          "Operational efficiency gains",
+          "Cost reduction",
+          "Improved quality metrics",
+          "Faster time-to-market"
+        ]
+      },
+      "children": [
+        {
+          "id": "intelligent-automation",
+          "title": "Intelligent Process Automation",
+          "description": "AI-powered workflow automation and RPA",
+          "type": "subtopic",
+          "content": {
+            "overview": "Automate complex business processes using AI-enhanced RPA, document processing, and intelligent workflow orchestration.",
+            "keyFeatures": [
+              "Intelligent document processing",
+              "Workflow automation",
+              "Exception handling",
+              "Process mining and optimization"
+            ],
+            "benefits": [
+              "70-90% time savings on manual tasks",
+              "Reduced error rates",
+              "24/7 operation capability",
+              "Employee focus on high-value work"
+            ],
+            "technologies": ["RPA", "OCR", "NLP", "Process Mining", "Workflow Engines"]
+          }
+        },
+        {
+          "id": "predictive-maintenance",
+          "title": "Predictive Maintenance",
+          "description": "AI-driven asset health monitoring and maintenance optimization",
+          "type": "subtopic",
+          "content": {
+            "overview": "Prevent equipment failures and optimize maintenance schedules through IoT sensors and machine learning models that predict asset health.",
+            "keyFeatures": [
+              "Real-time asset monitoring",
+              "Failure prediction models",
+              "Maintenance scheduling optimization",
+              "Parts inventory management"
+            ],
+            "benefits": [
+              "30-50% reduction in downtime",
+              "Lower maintenance costs",
+              "Extended asset lifecycle",
+              "Improved safety"
+            ],
+            "technologies": ["IoT Sensors", "Time Series Analysis", "Anomaly Detection", "Digital Twins"]
+          }
+        },
+        {
+          "id": "quality-intelligence",
+          "title": "Quality Intelligence",
+          "description": "AI-powered quality control and defect detection",
+          "type": "subtopic",
+          "content": {
+            "overview": "Ensure product quality through computer vision-based inspection, automated testing, and continuous quality improvement systems.",
+            "keyFeatures": [
+              "Visual quality inspection",
+              "Automated defect detection",
+              "Root cause analysis",
+              "Quality trend monitoring"
+            ],
+            "benefits": [
+              "99%+ defect detection accuracy",
+              "Reduced quality costs",
+              "Faster inspection times",
+              "Improved customer satisfaction"
+            ],
+            "technologies": ["Computer Vision", "Deep Learning", "Statistical Process Control", "Edge AI"]
+          }
+        }
+      ]
+    }
+  ]
+}

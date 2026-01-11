@@ -1,0 +1,71 @@
+<div class="mind-map-container">
+  <svg
+    class="mind-map-svg"
+    viewBox="0 0 100 100"
+    preserveAspectRatio="xMidYMid meet"
+  >
+
+    <!-- Glow -->
+    <defs>
+      <filter id="glow">
+        <feGaussianBlur stdDeviation="0.6" result="blur" />
+        <feMerge>
+          <feMergeNode in="blur" />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+    </defs>
+
+    <!-- Connection Lines -->
+    @for (pos of domainPositions(); track pos.node.id) {
+      <line
+        x1="50"
+        y1="50"
+        [attr.x2]="pos.x"
+        [attr.y2]="pos.y"
+        stroke="#00d4ff"
+        stroke-width="0.25"
+        opacity="0.6"
+      />
+    }
+
+    <!-- Root Node -->
+    @if (rootNode(); as root) {
+      <g
+        class="node-group root-node"
+        transform="translate(50 50)"
+        (click)="onNodeClick(root, $event)"
+      >
+        <circle r="6" [attr.fill]="root.color" filter="url(#glow)" />
+        <text
+          y="10"
+          text-anchor="middle"
+          dominant-baseline="middle"
+          class="node-label root-label"
+        >
+          {{ root.title }}
+        </text>
+      </g>
+    }
+
+    <!-- Domain Nodes -->
+    @for (pos of domainPositions(); track pos.node.id) {
+      <g
+        class="node-group domain-node"
+        [attr.transform]="pos.transform"
+        (click)="onNodeClick(pos.node, $event)"
+      >
+        <circle r="5" [attr.fill]="pos.node.color" filter="url(#glow)" />
+        <text
+          y="-7"
+          text-anchor="middle"
+          dominant-baseline="middle"
+          class="node-label domain-label"
+        >
+          {{ pos.node.title }}
+        </text>
+      </g>
+    }
+
+  </svg>
+</div>

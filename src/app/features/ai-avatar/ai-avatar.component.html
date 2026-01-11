@@ -1,0 +1,42 @@
+<div class="ai-avatar-container" @fadeIn>
+  <div class="avatar-wrapper" (click)="onAvatarClick()">
+    <!-- AI Avatar -->
+    <div class="avatar">
+      <div class="avatar-core">
+        <div class="core-circle"></div>
+        <div class="core-ring ring-1"></div>
+        <div class="core-ring ring-2"></div>
+        <div class="core-ring ring-3"></div>
+      </div>
+
+      <!-- Particles around avatar -->
+      <div class="particles">
+        @for (particle of [1,2,3,4,5,6,7,8]; track particle) {
+          <div class="particle" [style.animation-delay.s]="particle * 0.2"></div>
+        }
+      </div>
+
+      <!-- AI Icon -->
+      <div class="avatar-icon">
+        <span class="material-icons">psychology</span>
+      </div>
+    </div>
+
+    <!-- Greeting Tooltip -->
+    @if (showTooltip()) {
+      <div class="greeting-tooltip">
+        <div class="tooltip-content">
+          <p class="greeting-text">{{ greetingMessage() }}</p>
+          <p class="sub-text">{{ subMessage() }}</p>
+        </div>
+        <div class="tooltip-arrow"></div>
+      </div>
+    }
+  </div>
+
+  <!-- Status Indicator -->
+  <div class="status-indicator">
+    <div class="status-dot"></div>
+    <span class="status-text">AI Agent Online</span>
+  </div>
+</div>

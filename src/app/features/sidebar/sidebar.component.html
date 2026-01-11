@@ -1,0 +1,42 @@
+@if (sidebarVisible() && selectedDomain(); as domain) {
+  <aside class="sidebar" @slideIn>
+    <div class="sidebar-header">
+      <div class="domain-info">
+        <div class="domain-icon" [style.background]="domain.color">
+          <span class="material-icons">{{ domain.icon || 'folder' }}</span>
+        </div>
+        <div class="domain-title-section">
+          <h2 class="domain-title">{{ domain.title }}</h2>
+          <p class="domain-description">{{ domain.description }}</p>
+        </div>
+      </div>
+      <button class="close-btn" (click)="onClose()" aria-label="Close sidebar">
+        <span class="material-icons">close</span>
+      </button>
+    </div>
+
+    <div class="sidebar-content">
+      <h3 class="subtopics-header">Explore Topics</h3>
+      <ul class="subtopics-list" @listAnimation>
+        @for (subtopic of domainSubtopics(); track subtopic.id) {
+          <li
+            class="subtopic-item"
+            [class.active]="isSubtopicActive(subtopic.id)"
+            (click)="onSubtopicClick(subtopic)"
+          >
+            <div class="subtopic-card">
+              <div class="subtopic-indicator" [style.background]="domain.color"></div>
+              <div class="subtopic-content">
+                <h4 class="subtopic-title">{{ subtopic.title }}</h4>
+                <p class="subtopic-description">{{ subtopic.description }}</p>
+              </div>
+              <div class="subtopic-arrow">
+                <span class="material-icons">arrow_forward</span>
+              </div>
+            </div>
+          </li>
+        }
+      </ul>
+    </div>
+  </aside>
+}

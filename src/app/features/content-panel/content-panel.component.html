@@ -1,0 +1,103 @@
+<div class="content-panel" [class.with-sidebar]="sidebarVisible()">
+  @if (selectedNode(); as node) {
+    <div class="content-wrapper" @fadeIn>
+      <!-- Header Section -->
+      <header class="content-header">
+        <div class="header-badge" [style.background]="node.color">
+          <span class="material-icons">{{ node.icon || 'info' }}</span>
+        </div>
+        <div class="header-text">
+          <div class="node-type-label">{{ node.type | uppercase }}</div>
+          <h1 class="content-title">{{ node.title }}</h1>
+          <p class="content-subtitle">{{ node.description }}</p>
+        </div>
+      </header>
+
+      @if (node.content) {
+        <div class="content-body" [@contentChange]="node.id">
+          <!-- Overview Section -->
+          <section class="content-section overview-section">
+            <div class="section-icon-header">
+              <span class="material-icons">description</span>
+              <h2 class="section-title">Overview</h2>
+            </div>
+            <p class="overview-text">{{ node.content.overview }}</p>
+          </section>
+
+          <!-- Key Features Section -->
+          @if (node.content.keyFeatures && node.content.keyFeatures.length > 0) {
+            <section class="content-section">
+              <div class="section-icon-header">
+                <span class="material-icons">star</span>
+                <h2 class="section-title">Key Features</h2>
+              </div>
+              <ul class="feature-list">
+                @for (feature of node.content.keyFeatures; track $index) {
+                  <li class="feature-item" [style.animation-delay.ms]="$index * 50">
+                    <span class="feature-bullet" [style.background]="node.color"></span>
+                    <span class="feature-text">{{ feature }}</span>
+                  </li>
+                }
+              </ul>
+            </section>
+          }
+
+          <!-- Benefits Section -->
+          @if (node.content.benefits && node.content.benefits.length > 0) {
+            <section class="content-section">
+              <div class="section-icon-header">
+                <span class="material-icons">trending_up</span>
+                <h2 class="section-title">Benefits</h2>
+              </div>
+              <div class="benefits-grid">
+                @for (benefit of node.content.benefits; track $index) {
+                  <div class="benefit-card" [style.animation-delay.ms]="$index * 75">
+                    <div class="benefit-icon" [style.background]="node.color">
+                      <span class="material-icons">check_circle</span>
+                    </div>
+                    <p class="benefit-text">{{ benefit }}</p>
+                  </div>
+                }
+              </div>
+            </section>
+          }
+
+          <!-- Use Cases Section -->
+          @if (node.content.useCases && node.content.useCases.length > 0) {
+            <section class="content-section">
+              <div class="section-icon-header">
+                <span class="material-icons">lightbulb</span>
+                <h2 class="section-title">Use Cases</h2>
+              </div>
+              <div class="use-cases-list">
+                @for (useCase of node.content.useCases; track $index) {
+                  <div class="use-case-item" [style.animation-delay.ms]="$index * 60">
+                    <span class="use-case-number">{{ $index + 1 }}</span>
+                    <span class="use-case-text">{{ useCase }}</span>
+                  </div>
+                }
+              </div>
+            </section>
+          }
+
+          <!-- Technologies Section -->
+          @if (node.content.technologies && node.content.technologies.length > 0) {
+            <section class="content-section">
+              <div class="section-icon-header">
+                <span class="material-icons">code</span>
+                <h2 class="section-title">Technologies</h2>
+              </div>
+              <div class="tech-tags">
+                @for (tech of node.content.technologies; track $index) {
+                  <span class="tech-tag" [style.animation-delay.ms]="$index * 40">
+                    {{ tech }}
+                  </span>
+                }
+              </div>
+            </section>
+          }
+        </div>
+      }
+    </div>
+  }
+</div>
