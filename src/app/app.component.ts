@@ -1,4 +1,4 @@
-import { Component, OnInit, inject, signal } from '@angular/core';
+import { Component, OnInit, inject, signal, effect, ViewChild, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MindMapComponent } from './features/mind-map/mind-map.component';
 import { SidebarComponent } from './features/sidebar/sidebar.component';
@@ -24,11 +24,35 @@ export class AppComponent implements OnInit {
   private stateService = inject(MindMapStateService);
   private dataService = inject(MindMapDataService);
 
+  @ViewChild('contentSection') contentSection!: ElementRef<HTMLDivElement>;
+
   isLoading = signal(true);
   error = signal<string | null>(null);
 
+  constructor() {
+    // Watch for node selection changes and scroll to content panel
+    effect(() => {
+      const selectedNode = this.stateService.selectedNode();
+      if (selectedNode && this.contentSection) {
+        // Add a small delay to ensure DOM updates complete
+        setTimeout(() => {
+          this.scrollToContent();
+        }, 100);
+      }
+    });
+  }
+
   ngOnInit(): void {
     this.loadData();
+  }
+
+  scrollToContent(): void {
+    if (this.contentSection?.nativeElement) {
+      this.contentSection.nativeElement.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
   }
 
   private loadData(): void {

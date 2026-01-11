@@ -26,10 +26,16 @@
       <!-- Mind Map Visualization -->
       <div class="mind-map-section">
         <app-mind-map></app-mind-map>
+
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator" (click)="scrollToContent()">
+          <span class="material-icons">expand_more</span>
+          <p>Scroll or click a node to explore</p>
+        </div>
       </div>
 
       <!-- Content Panel -->
-      <div class="content-section">
+      <div class="content-section" #contentSection>
         <app-content-panel></app-content-panel>
       </div>
     </main>

@@ -23,9 +23,11 @@
         y1="50"
         [attr.x2]="pos.x"
         [attr.y2]="pos.y"
-        stroke="#00d4ff"
-        stroke-width="0.25"
-        opacity="0.6"
+        [attr.stroke]="isNodeActive(pos.node.id) ? pos.node.color : '#00d4ff'"
+        [attr.stroke-width]="isNodeActive(pos.node.id) ? '0.4' : '0.25'"
+        [attr.opacity]="isNodeActive(pos.node.id) ? '1' : '0.6'"
+        class="connection-line"
+        [class.active-line]="isNodeActive(pos.node.id)"
       />
     }
 
@@ -33,10 +35,19 @@
     @if (rootNode(); as root) {
       <g
         class="node-group root-node"
+        [class.active]="isNodeActive(root.id)"
+        [class.inactive]="!isNodeActive(root.id) && selectedNode()"
         transform="translate(50 50)"
         (click)="onNodeClick(root, $event)"
+        [@nodeAnimation]="getNodeAnimationState(root.id)"
       >
-        <circle r="6" [attr.fill]="root.color" filter="url(#glow)" />
+        <circle
+          r="6"
+          [attr.fill]="root.color"
+          filter="url(#glow)"
+          class="node-circle"
+          [class.pulse]="isNodeActive(root.id)"
+        />
         <text
           y="10"
           text-anchor="middle"
@@ -52,10 +63,19 @@
     @for (pos of domainPositions(); track pos.node.id) {
       <g
         class="node-group domain-node"
+        [class.active]="isNodeActive(pos.node.id) || isDomainOfSelectedSubtopic(pos.node.id)"
+        [class.inactive]="!isNodeActive(pos.node.id) && !isDomainOfSelectedSubtopic(pos.node.id) && selectedNode()"
         [attr.transform]="pos.transform"
         (click)="onNodeClick(pos.node, $event)"
+        [@nodeAnimation]="getNodeAnimationState(pos.node.id)"
       >
-        <circle r="5" [attr.fill]="pos.node.color" filter="url(#glow)" />
+        <circle
+          r="5"
+          [attr.fill]="pos.node.color"
+          filter="url(#glow)"
+          class="node-circle"
+          [class.pulse]="isNodeActive(pos.node.id) || isDomainOfSelectedSubtopic(pos.node.id)"
+        />
         <text
           y="-7"
           text-anchor="middle"

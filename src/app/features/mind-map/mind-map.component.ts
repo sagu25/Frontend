@@ -12,8 +12,8 @@ import { MindMapNode } from '../../core/models/node.model';
   styleUrls: ['./mind-map.component.css'],
   animations: [
     trigger('nodeAnimation', [
-      state('inactive', style({ opacity: 0.7, transform: 'scale(0.95)' })),
-      state('active', style({ opacity: 1, transform: 'scale(1)' })),
+      state('inactive', style({ opacity: 0.7 })),
+      state('active', style({ opacity: 1 })),
       transition('inactive <=> active', animate('300ms cubic-bezier(0.4, 0, 0.2, 1)'))
     ])
   ]
@@ -60,7 +60,16 @@ readonly domainPositions = computed(() => {
     return !!selected && selected.id === nodeId;
   }
 
+  isDomainOfSelectedSubtopic(domainId: string): boolean {
+    const selected = this.selectedNode();
+    if (!selected || selected.type !== 'subtopic') return false;
+
+    const root = this.rootNode();
+    const domain = root?.children?.find(d => d.id === domainId);
+    return !!domain?.children?.some(subtopic => subtopic.id === selected.id);
+  }
+
   getNodeAnimationState(nodeId: string): string {
-    return this.isNodeActive(nodeId) ? 'active' : 'inactive';
+    return this.isNodeActive(nodeId) || this.isDomainOfSelectedSubtopic(nodeId) ? 'active' : 'inactive';
   }
 }

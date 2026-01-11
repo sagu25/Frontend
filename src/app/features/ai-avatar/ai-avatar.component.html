@@ -24,7 +24,7 @@
 
     <!-- Greeting Tooltip -->
     @if (showTooltip()) {
-      <div class="greeting-tooltip">
+      <div class="greeting-tooltip" @messageChange>
         <div class="tooltip-content">
           <p class="greeting-text">{{ greetingMessage() }}</p>
           <p class="sub-text">{{ subMessage() }}</p>

@@ -30,7 +30,7 @@
 ============================ */
 .node-group {
   cursor: pointer;
-  transition: transform 0.25s ease, filter 0.25s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .node-group:hover circle {
@@ -38,18 +38,42 @@
   filter: drop-shadow(0 0 14px currentColor);
 }
 
+/* Active state - when node is selected */
+.node-group.active {
+  opacity: 1;
+}
+
+.node-group.active circle {
+  transform: scale(1.05);
+}
+
+/* Inactive state - when another node is selected */
+.node-group.inactive {
+  opacity: 0.35;
+}
+
+.node-group.inactive:hover {
+  opacity: 0.65;
+}
+
 /* ============================
    ROOT NODE
 ============================ */
 .root-node circle {
-  filter: drop-shadow(0 0 18px currentColor);
+  filter: drop-shadow(0 0 18px currentColor) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-box: fill-box;
+  transform-origin: center;
 }
 
 /* ============================
    DOMAIN NODE
 ============================ */
 .domain-node circle {
-  filter: drop-shadow(0 0 12px currentColor);
+  filter: drop-shadow(0 0 12px currentColor) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-box: fill-box;
+  transform-origin: center;
 }
 
 /* ============================
@@ -78,17 +102,61 @@
 }
 
 /* ============================
-   CONNECTION LINES
+   NODE CIRCLES
 ============================ */
-line {
-  stroke: #00d4ff;
-  animation: ringPulse 2.4s ease-in-out infinite;
-  filter: drop-shadow(0 0 6px rgba(0, 212, 255, 0.35));
+.node-circle {
+  /* Transitions are handled by parent circle selectors */
+}
+
+/* Pulse animation for active nodes */
+.node-circle.pulse {
+  animation: nodePulse 2s ease-in-out infinite;
+}
+
+.root-node circle.pulse {
+  filter: drop-shadow(0 0 18px currentColor) !important;
+}
+
+.domain-node circle.pulse {
+  filter: drop-shadow(0 0 12px currentColor) !important;
 }
 
 /* ============================
-   PULSE ANIMATION
+   CONNECTION LINES
 ============================ */
+.connection-line {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: drop-shadow(0 0 6px rgba(0, 212, 255, 0.35));
+}
+
+.connection-line.active-line {
+  animation: linePulse 2s ease-in-out infinite;
+  filter: drop-shadow(0 0 12px currentColor);
+}
+
+/* ============================
+   ANIMATIONS
+============================ */
+@keyframes nodePulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes linePulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
 @keyframes ringPulse {
   0%,
   100% {

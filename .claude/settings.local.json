@@ -3,7 +3,11 @@
     "allow": [
       "Bash(del \"src\\\\styles\\\\styles.scss\" \"src\\\\app\\\\app.component.scss\" \"src\\\\app\\\\features\\\\mind-map\\\\mind-map.component.scss\" \"src\\\\app\\\\features\\\\sidebar\\\\sidebar.component.scss\" \"src\\\\app\\\\features\\\\content-panel\\\\content-panel.component.scss\" \"src\\\\app\\\\features\\\\ai-avatar\\\\ai-avatar.component.scss\")",
       "Bash(npm install:*)",
-      "Bash(npm run build)"
+      "Bash(npm run build)",
+      "Bash(npm start)",
+      "Bash(timeout /t 1)",
+      "Bash(findstr:*)",
+      "Bash(find:*)"
     ]
   }
 }

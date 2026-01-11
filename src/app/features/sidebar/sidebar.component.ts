@@ -50,4 +50,16 @@ export class SidebarComponent {
   onClose(): void {
     this.stateService.closeSidebar();
   }
+
+  onScrollBack(): void {
+    // Find the mind-map section and scroll to it
+    const mindMapSection = document.querySelector('.mind-map-section');
+    if (mindMapSection) {
+      this.stateService.closeSidebar();
+      mindMapSection.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  }
 }

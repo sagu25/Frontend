@@ -143,6 +143,8 @@
   overflow-y: auto;
   position: relative;
   z-index: 1;
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
 }
 
 .mind-map-section {
@@ -155,6 +157,7 @@
   background: linear-gradient(180deg, rgba(0, 212, 255, 0.02) 0%, transparent 100%);
   position: relative;
   min-height: 100vh;
+  scroll-snap-align: start;
 }
 
 .mind-map-section::after {
@@ -173,4 +176,60 @@
   overflow-y: auto;
   position: relative;
   min-height: 100vh;
+  scroll-snap-align: start;
+}
+
+/* ============================
+   SCROLL INDICATOR
+============================ */
+.scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgba(255, 255, 255, 0.5);
+  animation: bounceUpDown 2s ease-in-out infinite;
+  z-index: 10;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.scroll-indicator:hover {
+  color: rgba(0, 212, 255, 0.9);
+  transform: translateX(-50%) scale(1.1);
+}
+
+.scroll-indicator .material-icons {
+  font-size: 2.5rem;
+  animation: bounceArrow 2s ease-in-out infinite;
+}
+
+.scroll-indicator p {
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-align: center;
+  margin: 0;
+}
+
+@keyframes bounceUpDown {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-10px);
+  }
+}
+
+@keyframes bounceArrow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(8px);
+  }
 }
