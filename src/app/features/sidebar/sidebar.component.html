@@ -16,6 +16,11 @@
     </div>
 
     <div class="sidebar-content">
+      <!-- Search Component -->
+      <div class="search-section">
+        <app-search></app-search>
+      </div>
+
       <h3 class="subtopics-header">Explore Topics</h3>
       <ul class="subtopics-list" @listAnimation>
         @for (subtopic of domainSubtopics(); track subtopic.id) {

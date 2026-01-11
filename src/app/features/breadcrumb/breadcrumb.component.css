@@ -1,0 +1,107 @@
+.breadcrumb-nav {
+  margin-bottom: var(--spacing-lg);
+}
+
+.breadcrumb-list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.breadcrumb-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.breadcrumb-link {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  color: var(--color-text-secondary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  transition: all var(--transition-normal) var(--easing);
+  cursor: pointer;
+}
+
+.breadcrumb-link:hover {
+  background: rgba(0, 212, 255, 0.1);
+  border-color: rgba(0, 212, 255, 0.3);
+  color: var(--color-primary);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.breadcrumb-link:active {
+  transform: translateY(0);
+}
+
+.breadcrumb-link:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.breadcrumb-current {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background: rgba(0, 212, 255, 0.15);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: var(--radius-md);
+  color: var(--color-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+}
+
+.breadcrumb-icon {
+  font-size: 18px;
+  opacity: 0.8;
+}
+
+.breadcrumb-link:hover .breadcrumb-icon {
+  opacity: 1;
+}
+
+.breadcrumb-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+}
+
+.breadcrumb-separator {
+  display: flex;
+  align-items: center;
+  color: var(--color-text-tertiary);
+  font-size: 18px;
+}
+
+.breadcrumb-separator .material-icons {
+  font-size: 18px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .breadcrumb-text {
+    max-width: 120px;
+  }
+
+  .breadcrumb-link,
+  .breadcrumb-current {
+    padding: var(--spacing-xs);
+  }
+
+  .breadcrumb-icon {
+    font-size: 16px;
+  }
+}

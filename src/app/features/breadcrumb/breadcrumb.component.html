@@ -1,0 +1,30 @@
+<nav class="breadcrumb-nav" aria-label="Breadcrumb" @fadeIn>
+  <ol class="breadcrumb-list">
+    @for (crumb of breadcrumbs(); track crumb.id; let isLast = $last; let i = $index) {
+      <li class="breadcrumb-item" [class.active]="isLast">
+        @if (!isLast) {
+          <button
+            class="breadcrumb-link"
+            (click)="onBreadcrumbClick(crumb)"
+            [attr.aria-label]="'Navigate to ' + crumb.title"
+          >
+            <span class="material-icons breadcrumb-icon">
+              {{ crumb.icon || (crumb.type === 'root' ? 'home' : 'folder') }}
+            </span>
+            <span class="breadcrumb-text">{{ crumb.title }}</span>
+          </button>
+          <span class="breadcrumb-separator" aria-hidden="true">
+            <span class="material-icons">chevron_right</span>
+          </span>
+        } @else {
+          <span class="breadcrumb-current" [attr.aria-current]="'page'">
+            <span class="material-icons breadcrumb-icon">
+              {{ crumb.icon || 'article' }}
+            </span>
+            <span class="breadcrumb-text">{{ crumb.title }}</span>
+          </span>
+        }
+      </li>
+    }
+  </ol>
+</nav>

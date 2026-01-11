@@ -1,0 +1,67 @@
+<div class="search-container">
+  <div class="search-input-wrapper" [class.focused]="isFocused" [class.has-results]="searchService.searchResults().length > 0">
+    <span class="material-icons search-icon">search</span>
+    <input
+      #searchInput
+      type="text"
+      class="search-input"
+      placeholder="Search topics, features, technologies..."
+      [(ngModel)]="searchQuery"
+      (input)="onSearchInput($event)"
+      (focus)="onSearchFocus()"
+      (blur)="onSearchBlur()"
+      (keydown)="onKeyDown($event)"
+      autocomplete="off"
+      [attr.aria-label]="'Search content'"
+    />
+    @if (searchQuery) {
+      <button
+        class="search-clear-btn"
+        (click)="onClearSearch()"
+        [attr.aria-label]="'Clear search'"
+      >
+        <span class="material-icons">close</span>
+      </button>
+    }
+  </div>
+
+  <!-- Search Results Dropdown -->
+  @if (searchQuery.length >= 2 && isFocused) {
+    <div class="search-results" @slideDown>
+      @if (searchService.searchResults().length > 0) {
+        <div class="results-list">
+          @for (result of searchService.searchResults(); track result.node.id) {
+            <button
+              class="result-item"
+              (click)="onResultClick(result)"
+              [attr.aria-label]="'Navigate to ' + result.node.title"
+            >
+              <div class="result-icon" [style.background]="result.node.color">
+                <span class="material-icons">
+                  {{ result.node.icon || (result.node.type === 'domain' ? 'folder' : 'article') }}
+                </span>
+              </div>
+              <div class="result-content">
+                <div class="result-title" [innerHTML]="result.highlightedTitle"></div>
+                @if (result.node.description) {
+                  <div class="result-description">{{ result.node.description }}</div>
+                }
+                <div class="result-meta">
+                  <span class="result-type">{{ result.node.type }}</span>
+                  <span class="result-match-badge">{{ getMatchBadgeText(result.matchedFields) }}</span>
+                </div>
+              </div>
+              <span class="material-icons result-arrow">arrow_forward</span>
+            </button>
+          }
+        </div>
+      } @else {
+        <div class="no-results" @fadeIn>
+          <span class="material-icons no-results-icon">search_off</span>
+          <p class="no-results-text">No results found for "{{ searchQuery }}"</p>
+          <p class="no-results-hint">Try different keywords or check spelling</p>
+        </div>
+      }
+    </div>
+  }
+</div>

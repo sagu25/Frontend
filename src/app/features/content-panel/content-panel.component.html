@@ -1,6 +1,9 @@
 <div class="content-panel" [class.with-sidebar]="sidebarVisible()">
   @if (selectedNode(); as node) {
     <div class="content-wrapper" @fadeIn>
+      <!-- Breadcrumb Navigation -->
+      <app-breadcrumb></app-breadcrumb>
+
       <!-- Header Section -->
       <header class="content-header">
         <div class="header-badge" [style.background]="node.color">

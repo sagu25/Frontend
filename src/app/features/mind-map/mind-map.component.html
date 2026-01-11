@@ -1,9 +1,43 @@
-<div class="mind-map-container">
+<div class="mind-map-container"
+     (touchstart)="onTouchStart($event)"
+     (touchmove)="onTouchMove($event)">
+
+  <!-- Zoom Controls -->
+  <div class="zoom-controls">
+    <button
+      class="zoom-btn zoom-in"
+      (click)="zoomIn()"
+      [disabled]="zoomLevel() >= maxZoom"
+      [attr.aria-label]="'Zoom in'"
+      title="Zoom In">
+      <span class="material-icons">add</span>
+    </button>
+    <div class="zoom-level">{{ (zoomLevel() * 100).toFixed(0) }}%</div>
+    <button
+      class="zoom-btn zoom-out"
+      (click)="zoomOut()"
+      [disabled]="zoomLevel() <= minZoom"
+      [attr.aria-label]="'Zoom out'"
+      title="Zoom Out">
+      <span class="material-icons">remove</span>
+    </button>
+    <button
+      class="zoom-btn zoom-reset"
+      (click)="resetZoom()"
+      [disabled]="zoomLevel() === 1"
+      [attr.aria-label]="'Reset zoom'"
+      title="Reset Zoom (100%)">
+      <span class="material-icons">refresh</span>
+    </button>
+  </div>
+
   <svg
+    #svgElement
     class="mind-map-svg"
     viewBox="0 0 100 100"
     preserveAspectRatio="xMidYMid meet"
   >
+    <g [attr.transform]="getZoomTransform()" class="zoom-group">
 
     <!-- Glow -->
     <defs>
@@ -42,7 +76,7 @@
         [@nodeAnimation]="getNodeAnimationState(root.id)"
       >
         <circle
-          r="6"
+          r="8"
           [attr.fill]="root.color"
           filter="url(#glow)"
           class="node-circle"
@@ -87,5 +121,6 @@
       </g>
     }
 
+    </g> <!-- Close zoom-group -->
   </svg>
 </div>

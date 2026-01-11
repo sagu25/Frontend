@@ -109,6 +109,10 @@
   z-index: 1;
 }
 
+.search-section {
+  margin-bottom: 1.5rem;
+}
+
 .sidebar-content::-webkit-scrollbar {
   width: 6px;
 }

@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { MindMapStateService } from '../../core/services/mind-map-state.service';
 import { MindMapNode } from '../../core/models/node.model';
+import { SearchComponent } from '../search/search.component';
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, SearchComponent],
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css'],
   animations: [
